@@ -23,28 +23,48 @@ Ditto only has 1 move.
 Eevee has 6 evolutions.
  */
 
+(() => {
+
 
 //declaring and assigning variables
-const buttonName = document.querySelector("#nameBtn");
-const buttonId = document.querySelector("#idBtn");
+    const buttonName = document.querySelector("#nameBtn");
+    buttonName.addEventListener("click", searchName);
+    const pokemonName =document.querySelector("#pokeName");
+    const pokemonImg = document.querySelector("#pokeImg")
 
 
 
+    //function for name searchbox
+    function searchName() {
+        const nameValue = document.querySelector("#input-name").value;
+    //getting data from the pokeAPI
+        async function getName(value) {
+            const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${value}`);
+            const data = await response.json(); // parsing data to json text format
+            pokemonName.innerHTML = data.name + " <br> " + data.id;
+            pokemonImg.src = data.sprites.front_default;
+            //console.log(data)
+        }
 
-//getting data from the API
-async function getApi() {
-    const id = document.querySelector("#idBtn").value;
-    const name = document.querySelector("#nameBtn").value;
-    let response = await fetch(`https://pokeapi.co/api/v2/pokemon/${id || name}`);
-    let data = await response.json(); // parsing data to json text format
-    console.log(data);
+        getName(nameValue);
+
+    }
+
+
+/*.then(function (result) {
+result = result [0];
+let tempCopy = template.content.cloneNode(true); //cloning html
+tempCopy.querySelector(".name").innerHTML = result.name;
+tempCopy.querySelector(".alter-ego").innerHTML = result.alterEgo;
+tempCopy.querySelector(".powers").innerHTML = result.abilities;
+target.appendChild(tempCopy);
+})
 }
 
+*/
 
 
-
-
-
+})();
 
 
 

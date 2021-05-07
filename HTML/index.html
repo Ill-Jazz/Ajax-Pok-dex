@@ -10,18 +10,31 @@
 </head>
 <body>
 <main>
-    <section id="searchSection">
-        <div id="name">
-            <label for="input-name">Search by name</label>
-            <input id="input-name" class="input-field" type="text">
-            <button id="nameBtn" class="searchBtn" type="button">SEARCH</button>
-        </div>
-        <div id="identification">
-            <label for="input-id">Search by id</label>
-            <input id="input-id" class="input-field" type="text">
-            <button id="idBtn" class="searchBtn" type="button">SEARCH</button>
-        </div>
-    </section>
+    <div class="container1">
+        <section id="searchSection">
+            <div id="name">
+                <label for="input-name">Search by name</label>
+                <input id="input-name" class="input-field" type="text">
+                <button id="nameBtn" class="searchBtn" type="button">SEARCH</button>
+            </div>
+        </section>
+        <section id="displaySection">
+            <div class="flip-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <img id="pokeImg" src="" alt="" style="width:300px;height:300px;">
+                    </div>
+                    <div class="flip-card-back">
+                        <h1 id="pokeName"></h1>
+                        <p id="pokeId"></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+    <div class="container2">
+        <h1>POKÉDEX</h1>
+    </div>
 </main>
 
 <script src="../JS/script.js"></script>

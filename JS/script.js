@@ -28,41 +28,33 @@ Eevee has 6 evolutions.
 
 //declaring and assigning variables
     const buttonName = document.querySelector("#nameBtn");
-    buttonName.addEventListener("click", searchName);
+    buttonName.addEventListener("click", searchPoke);
     const pokemonName =document.querySelector("#pokeName");
-    const pokemonImg = document.querySelector("#pokeImg")
+    const pokemonImg = document.querySelector("#pokeImg");
+    const pokemonMove = document.querySelector("#pokeMove");
 
 
 
     //function for name searchbox
-    function searchName() {
-        const nameValue = document.querySelector("#input-name").value;
+    function searchPoke() {
+        const pokeValue = document.querySelector("#input-name").value;
     //getting data from the pokeAPI
-        async function getName(value) {
+        async function getName(value,move) {
             const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${value}`);
             const data = await response.json(); // parsing data to json text format
-            pokemonName.innerHTML = data.name + " <br> " + data.id;
+            pokemonName.innerHTML = data.name + " <br> " + "index: " + data.id;
             pokemonImg.src = data.sprites.front_default;
-            //console.log(data)
+            pokemonMove.innerHTML =
+                "<u>Moves</u>" + "<br>" + data.moves[1].move.name + "<br>" +
+                data.moves[2].move.name + "<br>" +
+                data.moves[3].move.name + "<br>" +
+                data.moves[4].move.name;
+
         }
 
-        getName(nameValue);
+        getName(pokeValue);
 
     }
-
-
-/*.then(function (result) {
-result = result [0];
-let tempCopy = template.content.cloneNode(true); //cloning html
-tempCopy.querySelector(".name").innerHTML = result.name;
-tempCopy.querySelector(".alter-ego").innerHTML = result.alterEgo;
-tempCopy.querySelector(".powers").innerHTML = result.abilities;
-target.appendChild(tempCopy);
-})
-}
-
-*/
-
 
 })();
 
